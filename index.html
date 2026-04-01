@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Генератор рекламної воронки</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="layout">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 16 16" fill="none" width="17" height="17">
+                <polygon points="8,1 15,14 1,14" fill="white" />
+              </svg>
+            </div>
+            <h1>Воронка Генератор</h1>
+          </div>
+          <p>Введи дані — все розраховується автоматично</p>
+        </div>
+
+        <div class="panel-body">
+          <div class="section">
+            <div class="section-title">Канал</div>
+            <div class="field">
+              <label>Рекламний канал</label
+              ><input id="i-channel" value="Instagram, Facebook" />
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">Воронка</div>
+            <div class="row2">
+              <div class="field">
+                <label>Охоплення</label
+                ><input id="i-reach" type="number" value="27567" />
+              </div>
+              <div class="field">
+                <label>Покази</label
+                ><input id="i-impr" type="number" value="57081" />
+              </div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label>Звернень (ліди)</label
+                ><input id="i-leads" type="number" value="198" />
+              </div>
+              <div class="field">
+                <label>Продажі</label
+                ><input id="i-sales" type="number" value="2" />
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">Фінанси</div>
+            <div class="row2">
+              <div class="field">
+                <label>Бюджет ($)</label
+                ><input
+                  id="i-budget"
+                  type="number"
+                  step="0.01"
+                  value="118.58"
+                />
+              </div>
+              <div class="field">
+                <label>Сер. чек ($)</label
+                ><input id="i-check" type="number" step="0.01" value="64.47" />
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              Авторозрахунок <span class="auto-tag">⚡ авто</span>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label>Покази / Охоплення</label
+                ><input id="o-p1" class="auto" readonly />
+              </div>
+              <div class="field">
+                <label>Ліди / Охоплення</label
+                ><input id="o-p2" class="auto" readonly />
+              </div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label>Продажі / Охоплення</label
+                ><input id="o-p3" class="auto" readonly />
+              </div>
+              <div class="field">
+                <label>CPL ($)</label><input id="o-cpl" class="auto" readonly />
+              </div>
+            </div>
+            <div class="row3">
+              <div class="field">
+                <label>CPA ($)</label><input id="o-cpa" class="auto" readonly />
+              </div>
+              <div class="field">
+                <label>Дохід ($)</label
+                ><input id="o-rev" class="auto" readonly />
+              </div>
+              <div class="field">
+                <label>ROI (%)</label><input id="o-roi" class="auto" readonly />
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-dl" id="btn-dl">
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Завантажити .docx
+          </button>
+          <div class="status" id="status"></div>
+        </div>
+      </div>
+
+      <div class="preview-area">
+        <div class="preview-bar">
+          <span>Попередній перегляд</span>
+          <span class="live">Live</span>
+        </div>
+        <div class="doc" id="doc"></div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
