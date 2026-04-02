@@ -9,13 +9,13 @@ var val = function (id) {
 };
 
 var pct = function (a, b) {
-  return b > 0 ? ((a / b) * 100).toFixed(2) + " %" : "—";
+  return b > 0 ? ((a / b) * 100).toFixed(2) + " %" : "0.00 %";
 };
 var money = function (v) {
-  return isFinite(v) && v > 0 ? v.toFixed(2) + " $" : "—";
+  return isFinite(v) ? v.toFixed(2) + " $" : "—";
 };
 var loc = function (v) {
-  return v > 0 ? Math.round(v).toLocaleString("uk-UA") : "—";
+  return v >= 0 ? Math.round(v).toLocaleString("uk-UA") : "—";
 };
 
 function getCalc() {
@@ -58,16 +58,16 @@ function updateAutoFields(d) {
   g("o-p1").value = d.p1;
   g("o-p2").value = d.p2;
   g("o-p3").value = d.p3;
-  g("o-cpl").value = d.cpl > 0 ? d.cpl.toFixed(2) + " $" : "—";
-  g("o-cpa").value = d.cpa > 0 ? d.cpa.toFixed(2) + " $" : "—";
-  g("o-rev").value = d.rev > 0 ? d.rev.toFixed(2) + " $" : "—";
-  g("o-roi").value = d.rev > 0 ? d.roi.toFixed(2) + " %" : "—";
+  g("o-cpl").value = money(d.cpl);
+  g("o-cpa").value = money(d.cpa);
+  g("o-rev").value = money(d.rev);
+  g("o-roi").value = d.roi.toFixed(2) + " %";
 }
 
 function makeSVG(d, scale) {
   var S = scale || 1;
   var lc = function (v) {
-    return v > 0 ? Math.round(v).toLocaleString("uk-UA") : "—";
+    return v >= 0 ? Math.round(v).toLocaleString("uk-UA") : "—";
   };
   var pt = function (x, y) {
     return x * S + "," + y * S;
@@ -493,13 +493,13 @@ function buildRows(d) {
     ["Рекламні канали", ch],
     ["Рекламний бюджет", money(d.budget)],
     ["Кількість звернень", loc(d.leads)],
-    ["CPL (ціна звернення)", d.cpl > 0 ? money(d.cpl) : "—"],
+    ["CPL (ціна звернення)", money(d.cpl)],
     ["Кількість продажів", loc(d.sales)],
-    ["CPA (ціна продажу)", d.cpa > 0 ? money(d.cpa) : "—"],
+    ["CPA (ціна продажу)", money(d.cpa)],
   ];
-  if (d.check > 0) rows.push(["Сер. Чек", money(d.check)]);
-  if (d.rev > 0) rows.push(["Дохід", money(d.rev)]);
-  if (d.rev > 0) rows.push(["ROI", d.roi.toFixed(1) + " %"]);
+  if (d.check >= 0) rows.push(["Сер. Чек", money(d.check)]);
+  if (d.rev >= 0) rows.push(["Дохід", money(d.rev)]);
+  if (d.rev >= 0) rows.push(["ROI", d.roi.toFixed(1) + " %"]);
   return rows;
 }
 
