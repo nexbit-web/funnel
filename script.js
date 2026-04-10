@@ -27,8 +27,8 @@ function getCalc() {
   var check = num("i-check");
 
   var p1 = pct(impr, reach);
-  var p2 = pct(leads, reach);
-  var p3 = pct(sales, reach);
+  var p2 = pct(leads, impr);
+  var p3 = pct(sales, leads);
 
   var cpl = leads > 0 ? budget / leads : 0;
   var cpa = sales > 0 ? budget / sales : 0;
